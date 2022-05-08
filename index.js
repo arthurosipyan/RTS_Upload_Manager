@@ -8,6 +8,8 @@ function upload() {
     // } else {
     //    element.setAttribute("hidden", "hidden");
     // }
+
+    document.getElementById("copyTextButton").style.display = "block";
     
     let files = document.getElementById('fileUpload').files;
     if(files.length==0){
