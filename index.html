@@ -10,7 +10,10 @@
     <input type="file" id="fileUpload" accept=".xlsx">
     <button onclick="upload()">Upload</button>
     <br><br>
-    <textarea id="json-result" style="display:none;height:500px;width:350px;"></textarea>
+    <h2 id="totalInvoices"></h2>
+    <h2 id="totalAmount"></h2>
+    <textarea id="sheetResults" style="display:none;height:350px;width:350px;"></textarea>
+    <button onclick="copyText()" id="copyTextButton">Copy text</button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="./index.js"></script>
