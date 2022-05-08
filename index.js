@@ -26,11 +26,23 @@ function excelFileToJSON(file){
             var workbook = XLSX.read(data, {
                 type : 'binary'
             });
-            let workbookSheets = workbook.SheetNames;
+            // let workbookSheets = workbook.SheetNames;
+            let lastSheet = workbook.SheetNames[workbook.SheetNames.length-1];
+            
+            // store sheets in result object
+            var result = {};
+            workbook.SheetNames.forEach(function(sheetName) {
+                var roa = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
+                if (roa.length > 0) {
+                    result[sheetName] = roa;
+                }
+              });
+
+            // var result = XLSX.utils.sheet_to_row_object_array(workbookSheets[workbookSheets.length-1]);
             
             // displaying the json result
             var resultEle=document.getElementById("json-result");
-            resultEle.value=JSON.stringify(workbookSheets[workbookSheets.length-1], null, 4);
+            resultEle.value=JSON.stringify(result[lastSheet], null, 4);
             resultEle.style.display='block';
             }
       }catch(e){
