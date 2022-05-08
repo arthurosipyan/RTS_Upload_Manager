@@ -9,13 +9,13 @@ function upload() {
     //    element.setAttribute("hidden", "hidden");
     // }
     
-    var files = document.getElementById('fileUpload').files;
+    let files = document.getElementById('fileUpload').files;
     if(files.length==0){
         alert("Please choose any file...");
         return;
     }
-    var filename = files[0].name;
-    var extension = filename.substring(filename.lastIndexOf(".")).toUpperCase();
+    let filename = files[0].name;
+    let extension = filename.substring(filename.lastIndexOf(".")).toUpperCase();
     if (extension == '.XLS' || extension == '.XLSX') {
         processFile(files[0]);
     }else{
@@ -25,7 +25,7 @@ function upload() {
   
   function copyText() {
     /* Get the text field */
-    var copiedText = document.getElementById("sheetResults");
+    let copiedText = document.getElementById("sheetResults");
   
     /* Select the text field */
     copiedText.select();
@@ -44,7 +44,7 @@ function getTotalRows(invoices){
 
 function getTotalAmount(sheet){
     let x = 0;
-    var total = 0;
+    let total = 0;
     while (x < sheet.length){
         total += sheet[x]['InvAmt'];
         x++;
@@ -54,7 +54,7 @@ function getTotalAmount(sheet){
 
 function getInvoices(sheet){
     let x = 0;
-    var invoiceArr = [];
+    let invoiceArr = [];
     while (x < sheet.length){
         invoiceArr.push('"' + sheet[x]['Invoice#'] + '"');
         x++;
@@ -65,19 +65,19 @@ function getInvoices(sheet){
 // Method to read excel file and convert it into JSON 
 function processFile(file){
     try {
-        var reader = new FileReader();
+        let reader = new FileReader();
         reader.readAsBinaryString(file);
         reader.onload = function(e) {
-            var data = e.target.result;
-            var workbook = XLSX.read(data, {
+            let data = e.target.result;
+            let workbook = XLSX.read(data, {
                 type : 'binary'
             });
             let lastSheet = workbook.SheetNames[workbook.SheetNames.length-1];
             
             // store sheets in JSON
-            var result = {};
+            let result = {};
             workbook.SheetNames.forEach(function(sheetName) {
-                var roa = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
+                let roa = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[sheetName]);
                 if (roa.length > 0) {
                     result[sheetName] = roa;
                 }
