@@ -1,5 +1,6 @@
 function upload() {
     document.getElementById("copyTextButton").style.display = "block";
+    document.getElementById("verifyInvoices").style.display = "block";
     let files = document.getElementById('fileUpload').files;
     
     if (files.length==0) {
