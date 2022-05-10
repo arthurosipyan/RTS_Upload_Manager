@@ -54,6 +54,7 @@ function getInvoices(sheet) {
         invoiceArr.push('"' + sheet[x]['Invoice#'] + '"');
         x++;
     }
+    invoiceArr = invoiceArr.join(' ');
     return invoiceArr;
 }
 
@@ -82,7 +83,7 @@ function processFile(file) {
             let invoiceList = getInvoices(result[lastSheet]);
 
             // get total invoice count
-            let totalInvoices = getTotalRows(invoiceList);
+            let totalInvoices = getTotalRows(result[lastSheet]);
 
             // get total upload amount
             let totalAmount = (getTotalAmount(result[lastSheet])).toLocaleString('en-US', {
