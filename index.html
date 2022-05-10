@@ -3,10 +3,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
     <title>RTS Uploader</title>
 </head>
 <body>
     <h1>RTS Upload Manager</h1>
+    <span style="display: none;" id="status" class="success failed"></span>
     <input type="file" id="fileUpload" accept=".xlsx">
     <button onclick="upload()">Upload</button>
     <br><br>

@@ -19,6 +19,11 @@ function upload() {
     }
 }
 
+function verifyInvoices(invoices) {
+    document.getElementById("status").classList.toggle("success");
+    document.getElementById("status").style.display = "block";
+}
+
 function copyText() {
     /* Get the text field */
     let copiedText = document.getElementById("sheetResults");
@@ -82,6 +87,7 @@ function processFile(file) {
 
             // get list of invoices
             let invoiceList = getInvoices(result[lastSheet]);
+            verifyInvoices(invoiceList);
 
             // get total invoice count
             let totalInvoices = getTotalRows(result[lastSheet]);
