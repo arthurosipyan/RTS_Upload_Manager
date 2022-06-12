@@ -1,3 +1,5 @@
+var invioceList;
+
 function upload() {
     document.getElementById("copyTextButton").style.display = "block";
     document.getElementById("verifyInvoices").style.display = "block";
@@ -19,9 +21,23 @@ function upload() {
     }
 }
 
-function verifyInvoices(invoices) {
-    document.getElementById("status").classList.toggle("success");
-    document.getElementById("status").style.display = "block";
+function doesFileExist(f, directory) {
+    // need to refernce files, not strings
+    return f;
+}
+
+async function verifyInvoices() {
+    let directory;
+    
+    directory = await window.showDirectoryPicker({
+        startIn: 'desktop'
+    });
+
+    let invoiceArr = invoiceList.split(" ");
+    
+    for await (const invoice of invoiceArr) {
+        console.log(doesFileExist(invoice, directory));
+    }
 }
 
 function copyText() {
@@ -86,8 +102,7 @@ function processFile(file) {
             });
 
             // get list of invoices
-            let invoiceList = getInvoices(result[lastSheet]);
-            verifyInvoices(invoiceList);
+            invoiceList = getInvoices(result[lastSheet]);
 
             // get total invoice count
             let totalInvoices = getTotalRows(result[lastSheet]);

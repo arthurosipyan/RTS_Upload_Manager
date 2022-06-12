@@ -3,12 +3,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./index.css">
     <title>RTS Uploader</title>
 </head>
 <body>
     <h1>RTS Upload Manager</h1>
-    <span style="display: none;" id="status" class="success failed"></span>
     <input type="file" id="fileUpload" accept=".xlsx">
     <button onclick="upload()">Upload</button>
     <br><br>
@@ -17,8 +15,9 @@
     <textarea id="sheetResults" style="display:none;height:350px;width:350px;"></textarea>
     <button onclick="copyText()" id="copyTextButton" style="display: none;">Copy text</button>
     <button onclick="verifyInvoices()" id="verifyInvoices" style="display: none;">Verify Invoices</button>
+    <textarea id="verifiedText" style="display:none;height:350px;width:350px;"></textarea>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script src="./index.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
